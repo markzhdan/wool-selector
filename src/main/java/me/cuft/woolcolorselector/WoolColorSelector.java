@@ -26,6 +26,8 @@ public final class WoolColorSelector extends JavaPlugin implements Listener {
     private MongoCollection<Document> collection;
 
     private final Commands commands = new Commands();
+    
+    private static final Dotenv config = Dotenv.configure().load();
 
     @Override
     public void onEnable() {
@@ -38,7 +40,7 @@ public final class WoolColorSelector extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new blockPlaced(this), this);
         getServer().getPluginManager().registerEvents(this, this);
 
-        MongoClient mongoClient = MongoClients.create("mongodb+srv://Cuft:Cuft@morvencosmetics.alnd1.mongodb.net/<dbname>?retryWrites=true&w=majority");
+        MongoClient mongoClient = MongoClients.create(config.get("DBLINK"));
         MongoDatabase database = mongoClient.getDatabase("woolTest");
         collection = database.getCollection("wool");
 
