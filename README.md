@@ -1,4 +1,4 @@
-# MCSpigot-WoolSelector
+# Wool Selector
 One of my first every Minecraft Spigot plugins!
 
 
